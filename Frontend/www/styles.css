@@ -30,10 +30,37 @@ body {
     display: grid;
     gap: 1rem;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    grid-template-columns: repeat(3, minmax(200px, 1fr));
     padding: 1rem;
 }
 
+.spacer {
+    flex-grow: 1;
+}
+
+
+@media (min-width: 1100px) {
+    .pizza-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (min-width: 761px) and (max-width: 1099px) {
+    .pizza-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 760px) {
+    .pizza-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 500px) {
+    .cart {
+        display: none;
+    }
+}
 
 main {
     flex-grow: 3;
@@ -140,24 +167,24 @@ main {
 }
 
 .pizza-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    position: relative;
-    background-color: white;
-    padding: 0.5em;
-    border: 1.4px solid lightgray;
-    border-radius: 7px;
-    margin-bottom: 0.5em;
-    min-height: 545px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  background-color: white;
+  padding: 0.5em;
+  border: 1.4px solid lightgray;
+  border-radius: 7px;
+  margin-bottom: 0.5em;
 }
+
 
 .pizza-name {
     font-weight: bold;
     color: rgb(255, 136, 0);
     font-size: 1.8em;
-    margin: 0;
+    margin-top: auto;
 }
 
 .pizza-type {
@@ -265,6 +292,11 @@ main {
     font-size: 0.7em;
 }
 
+.cart-item-price {
+    font-size: 0.7em;
+    margin-bottom: 10px;
+}
+
 img[alt="weight"] {
     margin-left: 1em;
 }
@@ -312,6 +344,7 @@ img[alt="weight"] {
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
+    margin-top: 20px;
 }
 
 .pizza-size-info {
@@ -327,7 +360,7 @@ img[alt="weight"] {
     margin-bottom: 0.5em;
 }
 
-.pizza-ingr {
+.pizza-info {
     padding: 0px;
     margin: 0px;
     font-size: 0.9em;
@@ -381,7 +414,7 @@ img[alt="weight"] {
     border-bottom: 2px dashed rgb(188, 107, 35);
 }
 
-.dummie {
+.spaceblock {
     min-width: 300px;
 }
 
@@ -502,7 +535,7 @@ img[alt="weight"] {
         flex-direction: column;
     }
 
-    .dummie {
+    .spaceblock {
         display: none;
     }
 
