@@ -167,16 +167,17 @@ main {
 }
 
 .pizza-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  position: relative;
-  background-color: white;
-  padding: 0.5em;
-  border: 1.4px solid lightgray;
-  border-radius: 7px;
-  margin-bottom: 0.5em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    background-color: white;
+    padding: 0.5em;
+    border: 1.4px solid lightgray;
+    border-radius: 7px;
+    margin-bottom: 0.5em;
+    min-height: 610px;
 }
 
 
@@ -468,9 +469,6 @@ img[alt="weight"] {
         display: none;
     }
 
-    .pizza-card {
-        min-height: 520px;
-    }
 
     .badge-new,
     .badge-popular {
@@ -479,29 +477,6 @@ img[alt="weight"] {
     }
 }
 
-@media (max-width: 1005px) {
-    .pizza-card {
-        min-height: 570px;
-    }
-}
-
-@media(max-width: 970px) {
-    .pizza-card {
-        min-height: 570px;
-    }
-}
-
-@media(max-width: 880px) {
-    .pizza-card {
-        min-height: 520px;
-    }
-}
-
-@media(max-width: 777px) {
-    .pizza-card {
-        min-height: 500px;
-    }
-}
 
 @media (max-width: 900px) {
 
@@ -520,9 +495,6 @@ img[alt="weight"] {
         top: 7px;
     }
 
-    .pizza-card {
-        min-height: 535px;
-    }
 }
 
 @media (max-width:620px) {
