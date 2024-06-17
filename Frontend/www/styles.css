@@ -1,15 +1,16 @@
-.pizzaria-label-container {
+
+.pizzeria-label-container {
     transform: translate(10px);
     padding-bottom: 2em;
     position: absolute;
 }
 
-.pizzaria-label-container img {
+/* для верхнього бейджика */
+.pizzeria-label-container img {
     width: 80px;
     transform: rotate(180deg) translateY(27px);
 }
-
-.pizzaria-label {
+.pizzeria-label {
     color: aliceblue;
     padding: 1em;
     padding-top: 1.5em;
@@ -33,11 +34,13 @@ body {
     padding: 1rem;
 }
 
+/* елемент Flex, який росте, щоб заповнити доступний простір */
 .spacer {
     flex-grow: 1;
 }
 
 
+/*------------------- кількість колонок в грід ---------------------*/
 @media (min-width: 1100px) {
     .pizza-grid {
         grid-template-columns: repeat(3, 1fr);
@@ -61,6 +64,7 @@ body {
         display: none;
     }
 }
+/*------------------------------------------------------------------*/
 
 main {
     flex-grow: 3;
@@ -83,17 +87,16 @@ main {
 }
 
 .isSticky {
-    background-color: rgba(6, 20, 20, 0.92);
+    background-color: rgba(6, 20, 20, 0.92); /*напівпрозорий*/
 }
 
-.nav-contacts {
+.navigation-contacts {
     width: 100%;
     box-sizing: border-box;
     margin-right: 1.5em;
     margin-left: 7em;
 }
-
-.nav-text-info {
+.navigation-text-info {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -107,12 +110,12 @@ main {
 }
 
 .login-button {
-    background-color: orange;
+    background-color: #F58C30;
     color: white;
     padding: 0.2em 0.3em;
 }
 
-.nav-text-info:first-of-type {
+.navigation-text-info:first-of-type {
     border-bottom: 1.5px solid rgb(215, 215, 215);
 }
 
@@ -132,12 +135,13 @@ main {
 
 .pizza-filter {
     padding: 0.5em 0.7em;
-    color: orange;
+    color: #F58C30;
     font-weight: bold;
+    border: none;
 }
 
 .chosen-filter {
-    background-color: orange;
+    background-color: #F58C30;
     color: white;
     border-radius: 7px;
 }
@@ -183,7 +187,7 @@ main {
 
 .pizza-name {
     font-weight: bold;
-    color: rgb(255, 136, 0);
+    color: #F58C30;
     font-size: 1.8em;
     margin-top: auto;
 }
@@ -285,7 +289,7 @@ main {
 .cart-item-name {
     font-size: 1.2em;
     font-weight: bold;
-    color: rgb(255, 136, 0);
+    color: #F58C30;
 }
 
 .cart-item-size,
@@ -393,7 +397,7 @@ img[alt="weight"] {
     flex-direction: column;
     justify-content: flex-start;
     width: 80px;
-    background-color: rgb(234, 134, 46);
+    background-color: #F58C30;
     position: fixed;
     bottom: 0px;
     text-align: center;
@@ -497,7 +501,7 @@ img[alt="weight"] {
 
 }
 
-@media (max-width:620px) {
+@media (max-width:600px) {
 
     .additional-info {
         display: none;

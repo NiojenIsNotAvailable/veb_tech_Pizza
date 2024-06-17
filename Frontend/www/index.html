@@ -23,13 +23,13 @@
 
 <body>
     <main>
-        <nav class="heading">
-            <header class="pizzaria-label-container">
-                <p class="pizzaria-label">PIZZA<br>KMA</p>
+        <navigation class="heading">
+            <header class="pizzeria-label-container">
+                <p class="pizzeria-label">PIZZA<br>KMA</p>
                 <img src="assets/images/discount.svg" />
             </header>
-            <section class="nav-contacts">
-                <article class="nav-text-info">
+            <section class="navigation-contacts">
+                <article class="navigation-text-info">
                     <div>
                         <span class="contacts">(044) 225 5 222</span>
                         <span class="contacts temp">24 години/7 днів на тиждень</span>
@@ -37,11 +37,11 @@
                     </div>
                     <button class="btn btn-warning login-button">Ввійти</button>
                 </article>
-                <article class="nav-text-info">
+                <article class="navigation-text-info">
                     <span class="contacts" style="color: white">Піца</span>
                 </article>
             </section>
-        </nav>
+        </navigation>
         <section class="pizza-menu">
 
             <header class="all-pizza-label">
@@ -49,13 +49,14 @@
             </header>
 
             <article class="pizza-chooser-container">
-                <span class="pizza-filter chosen-filter" data-filter="all">Усі</span>
-                <span class="pizza-filter" data-filter="meat">М'ясні</span>
-                <span class="pizza-filter" data-filter="pineapple">З ананасами</span>
-                <span class="pizza-filter" data-filter="mushroom">З грибами</span>
-                <span class="pizza-filter" data-filter="seafood">З морепродуктами</span>
-                <span class="pizza-filter" data-filter="vega">Вега</span>
+                <button class="pizza-filter chosen-filter btn btn-outline-primary" data-filter="all">Усі</button>
+                <button class="pizza-filter btn btn-outline-primary" data-filter="meat">М'ясні</button>
+                <button class="pizza-filter btn btn-outline-primary" data-filter="pineapple">З ананасами</button>
+                <button class="pizza-filter btn btn-outline-primary" data-filter="mushroom">З грибами</button>
+                <button class="pizza-filter btn btn-outline-primary" data-filter="seafood">З морепродуктами</button>
+                <button class="pizza-filter btn btn-outline-primary" data-filter="vega">Вега</button>
             </article>
+
 
             <div class="container pizza-selector">
                 <div class="row" id="pizza_list">
@@ -77,27 +78,6 @@
             <button class="btn btn-default clear-cart-button">Очистити замовлення</button>
         </section>
         <div class="cart-items-container">
-            <!-- <section class="cart-item">
-                <div class="cart-item-text-info">
-                    <span class="cart-item-name">BBQ(Мала)</span>
-                    <article class="cart-item-desc">
-                        <img src="assets/images/size-icon.svg" alt="size" />
-                        <span class="cart-item-size">30</span>
-                        <img src="assets/images/weight.svg" alt="weight" />
-                        <span class="cart-item-weight">460</span>
-                    </article>
-                    <article class="cart-item-amount">
-                        <span class="cart-item-cost">665грн</span>
-                        <button class="decrease-button">-</button>
-                        <span class="cart-item-amount-pizza">4</span>
-                        <button class="increase-button">+</button>
-                        <button class="delete-cart-item">×</button>
-                    </article>
-                </div>
-                <div class="cart-item-img">
-                    <img src="assets/images/pizza_2.jpg" class="half-pizza">
-                </div>
-            </section> -->
         </div>
         <div class="order-cart-container">
             <section class="order-cart-text">

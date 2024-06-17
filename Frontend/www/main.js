@@ -1,3 +1,4 @@
+// масив з піцами
 const pizza_list = [
     {
         id: 1,
@@ -6,20 +7,20 @@ const pizza_list = [
         type: 'М’ясна піца',
         content: {
             meat: ['балик', 'салямі'],
-            chicken: ['куриця'],
-            cheese: ['сир моцарелла', 'сир рокфорд'],
+            chicken: ['курка'],
+            cheese: ['сир моцарела', 'сир рокфорд'],
             pineapple: ['ананаси'],
             additional: ['томатна паста', 'петрушка']
         },
         small_size: {
             weight: 370,
             size: 30,
-            price: 99
+            price: 111
         },
         big_size: {
             weight: 660,
             size: 40,
-            price: 169
+            price: 269
         },
         is_new: true,
         is_popular: true
@@ -31,9 +32,9 @@ const pizza_list = [
         title: "BBQ",
         type: 'М’ясна піца',
         content: {
-            meat: ['мисливські ковбаски', 'ковбаски папероні', 'шинка'],
+            meat: ['мисливські ковбаски', 'ковбаски пепероні', 'шинка'],
             cheese: ['сир домашній'],
-            mushroom: ['шампінйони'],
+            mushroom: ['печериці'],
             additional: ['петрушка', 'оливки']
         },
         small_size: {
@@ -54,8 +55,8 @@ const pizza_list = [
         title: "Міксовий поло",
         type: 'М’ясна піца',
         content: {
-            meat: ['вітчина', 'куриця копчена'],
-            cheese: ['сир моцарелла'],
+            meat: ['шинка', 'курка копчена'],
+            cheese: ['сир моцарела'],
             pineapple: ['ананаси'],
             additional: ['кукурудза', 'петрушка', 'соус томатний']
         },
@@ -73,12 +74,12 @@ const pizza_list = [
     {
         id: 4,
         icon: 'assets/images/pizza_5.jpg',
-        title: "Сициліано",
+        title: "Модна піца 2",
         type: 'М’ясна піца',
         content: {
-            meat: ['вітчина', 'салямі'],
+            meat: ['шинка', 'салямі'],
             cheese: ['сир моцарелла'],
-            mushroom: ['шампінйони'],
+            mushroom: ['печериці'],
             additional: ['перець болгарський', 'соус томатний']
         },
         small_size: {
@@ -98,14 +99,14 @@ const pizza_list = [
         title: "Маргарита",
         type: 'Вега піца',
         content: {
-            cheese: ['сир моцарелла', 'сир домашній'],
+            cheese: ['сир моцарела', 'сир домашній'],
             tomato: ['помідори'],
             additional: ['базилік', 'оливкова олія', 'соус томатний']
         },
         small_size: {
             weight: 370,
             size: 30,
-            price: 89
+            price: 101
         },
         big_size: {
             weight: 790,
@@ -116,14 +117,14 @@ const pizza_list = [
     {
         id: 43,
         icon: 'assets/images/pizza_6.jpg',
-        title: "Мікс смаків",
+        title: "Модна піца",
         type: 'М’ясна піца',
         content: {
             meat: ['ковбаски'],
-            cheese: ['сир моцарелла'],
-            mushroom: ['шампінйони'],
+            cheese: ['сир моцарела'],
+            mushroom: ['печериці'],
             pineapple: ['ананаси'],
-            additional: ['цибуля кримська', 'огірки квашені', 'соус гірчичний']
+            additional: ['цибуля', 'солені огірки']
         },
         small_size: {
             weight: 470,
@@ -142,8 +143,8 @@ const pizza_list = [
         title: "Дольче Маре",
         type: 'Морська піца',
         content: {
-            ocean: ['криветки тигрові', 'мідії', 'ікра червона', 'філе червоної риби'],
-            cheese: ['сир моцарелла'],
+            seafood: ['креветки тигрові', 'мідії', 'ікра червона', 'філе червоної риби'],
+            cheese: ['сир моцарела'],
             additional: ['оливкова олія']
         },
         big_size: {
@@ -158,34 +159,38 @@ const pizza_list = [
         title: "Россо Густо",
         type: 'Морська піца',
         content: {
-            ocean: ['ікра червона', 'лосось копчений'],
-            cheese: ['сир моцарелла'],
-            additional: ['оливкова олія', 'вершки']
+            seafood: ['ікра червона', 'лосось копчений'],
+            cheese: ['сир моцарела'],
+            additional: ['оливкова олія', 'вершки', 'secret third thing']
         },
         small_size: {
             weight: 400,
             size: 30,
-            price: 189
+            price: 100
         },
         big_size: {
             weight: 700,
             size: 40,
-            price: 299
+            price: 222
         }
     }
 ];
 
-// Function to initialize the page
+
 window.addEventListener('load', function () {
-    for (let card of pizza_list)
+    for (let card of pizza_list) //цикл по масиву піц щоб додати картки до ДОМ
         addPizzaCard(card);
 
+    //отримання даних з локал сторедж
     const storedData = localStorage.getItem('pizzasInCart');
     let pizzasInCart = [];
     if (storedData) pizzasInCart = JSON.parse(storedData);
     else localStorage.setItem('pizzasInCart', JSON.stringify([]));
+    
+    // Додати піци з cart data до cart section
     pizzasInCart.forEach(pizza => addPizzaToCart(pizza.card, pizza.size, pizza.amount));
 
+    // Додати івент лісенер до кнопок фільтрів і очистки
     let filterSpans = document.querySelectorAll('.pizza-filter');
     for (let span of filterSpans)
         span.addEventListener('click', filter);
@@ -196,7 +201,7 @@ window.addEventListener('load', function () {
     updateCartPrice();
 });
 
-// Function to clear the order (empty cart)
+// Функція для очищення замовлення
 function clearOrder() {
     document.querySelector('.cart-items-container').innerHTML = "";
     localStorage.setItem('pizzasInCart', JSON.stringify([]));
@@ -204,7 +209,7 @@ function clearOrder() {
     updateCartPrice();
 }
 
-// Function to handle filtering of pizzas
+// Функція що відповідає за фільтр
 function filter(e) {
     const span = e.target;
     toggleChosenFilter(span);
@@ -215,25 +220,27 @@ function filter(e) {
     if (filter === 'meat') filteredPizza = pizza_list.filter(pizza => pizza.content.meat);
     if (filter === 'pineapple') filteredPizza = pizza_list.filter(pizza => pizza.content.pineapple);
     if (filter === 'mushroom') filteredPizza = pizza_list.filter(pizza => pizza.content.mushroom);
-    if (filter === 'seafood') filteredPizza = pizza_list.filter(pizza => pizza.content.ocean);
-    if (filter === 'vega') filteredPizza = pizza_list.filter(pizza => !pizza.content.meat && !pizza.content.ocean);
+    if (filter === 'seafood') filteredPizza = pizza_list.filter(pizza => pizza.content.seafood);
+    if (filter === 'vega') filteredPizza = pizza_list.filter(pizza => !pizza.content.meat && !pizza.content.seafood);
+    // додати відсортовані піци до ДОМ
     filteredPizza.forEach(pizza => addPizzaCard(pizza));
+    // оновити число піц після сортування
     updateNumOfAllPizza(filteredPizza.length);
 }
 
-// Function to toggle the chosen filter class
+// Функція перемикання вибраного класу фільтру
 function toggleChosenFilter(span) {
     const lastFilter = document.querySelector(".chosen-filter");
     lastFilter.setAttribute('class', 'pizza-filter');
     span.setAttribute('class', 'pizza-filter chosen-filter')
 }
 
-// Function to update the number of pizzas shown after filtering
+// Функція для оновлення кількості піц, показаних після фільтрації
 function updateNumOfAllPizza(amount) {
     document.querySelector('.amount-of-pizza').textContent = amount.toString();
 }
 
-// Function to add a pizza card to the DOM
+// Функція додавання картки піци в DOM
 function addPizzaCard(card) {
     const cardContainer = document.querySelector('#pizza_list');
     const pizzaCard = document.createElement('div');
@@ -249,12 +256,12 @@ function addPizzaCard(card) {
                    </section>
     </div>`;
     pizzaCard.innerHTML = html;
-    setSizes(card, pizzaCard);
-    setBadge(card, pizzaCard);
-    cardContainer.appendChild(pizzaCard);
+    setSizes(card, pizzaCard); // встановлює розміри
+    setBadge(card, pizzaCard); // встановлює бейдж нова/популярна
+    cardContainer.appendChild(pizzaCard); // додати картку піци до контейнера
 }
 
-// Function to set pizza sizes (small and big) on the pizza card
+// додавання розмірів піц 
 function setSizes(card, pizzaCard) {
     let html = '';
     if (card.small_size) {
@@ -297,7 +304,7 @@ function setSizes(card, pizzaCard) {
     }
 }
 
-// Function to handle buying a pizza (add to cart)
+// Функція для додавання в кошик
 function buyPizza(card, isSmall) {
     if (isInCart(card, isSmall))
         increasePizza(card, isSmall);
@@ -313,13 +320,13 @@ function buyPizza(card, isSmall) {
     }
 }
 
-// Function to check if a pizza is already in the cart
+// Функція для перевірки чи піца вже є в кошику
 function isInCart(card, isSmall) {
     const cartItem = document.getElementById(`${card.id}${isSmall}`);
     return !!cartItem;
 }
 
-// Function to increase the quantity of a pizza in the cart
+// Функція для збільшення кількості піци в кошику
 function increasePizza(card, isSmall) {
     const cartItem = document.getElementById(`${card.id}${isSmall}`);
     const newValue = parseInt(cartItem.getElementsByClassName('cart-item-amount-pizza')[0].textContent) + 1;
@@ -330,7 +337,7 @@ function increasePizza(card, isSmall) {
     updateCartPrice();
 }
 
-// Function to update the local storage when a pizza quantity is changed
+// Функція для апдейту локал стореджу коли кількість піци змінена
 function refreshPizzaStorage(card, isSmall, newValue) {
     let pizzasInCart = JSON.parse(localStorage.getItem('pizzasInCart'));
     const index = pizzasInCart.findIndex(pizza => pizza.card.title === card.title && pizza.size === isSmall);
@@ -340,12 +347,12 @@ function refreshPizzaStorage(card, isSmall, newValue) {
     }
 }
 
-// Function to update the number of pizzas in the cart
+// Функція апдейту кількості піц в кошику
 function updatePizzaCartAmount() {
     document.querySelector('.cart-amount').textContent = document.getElementsByClassName('cart-item').length.toString();
 }
 
-// Function to update the total price of items in the cart
+// Функція для апдейту загальної ціни 
 function updateCartPrice() {
     let price = 0;
     let pizzasInCart = JSON.parse(localStorage.getItem('pizzasInCart')) || [];
@@ -355,7 +362,7 @@ function updateCartPrice() {
     document.querySelector(".order-cost").textContent = `${price}грн`;
 }
 
-// Function to add a pizza to the cart
+// Функція щоб додати піцу до кошику
 function addPizzaToCart(card, isSmall, amount) {
     const item = document.createElement("div");
     item.setAttribute("class", "cart-item");
@@ -385,7 +392,7 @@ function addPizzaToCart(card, isSmall, amount) {
     updateCartPrice();
 }
 
-// Function to decrease the quantity of a pizza in the cart
+// Функція щоб зменшити кількість піци в кошику
 function decreasePizza(card, isSmall) {
     const cartItem = document.getElementById(`${card.id}${isSmall}`);
     const newValue = parseInt(cartItem.getElementsByClassName('cart-item-amount-pizza')[0].textContent) - 1;
@@ -400,7 +407,7 @@ function decreasePizza(card, isSmall) {
     updateCartPrice();
 }
 
-// Function to remove a pizza from the cart
+// Функція щоб видалити піцу з кошику
 function removePizza(card, isSmall) {
     const cartItem = document.getElementById(`${card.id}${isSmall}`);
     cartItem.remove();
@@ -411,7 +418,7 @@ function removePizza(card, isSmall) {
     updateCartPrice();
 }
 
-// Function to set a badge (new or popular) on a pizza card
+// Функція щоб поставити бейдж 
 function setBadge(card, pizzaCard) {
     if (card.is_new || card.is_popular) {
         let badge = document.createElement('div');
@@ -421,7 +428,7 @@ function setBadge(card, pizzaCard) {
     }
 }
 
-// Function to get the description of a pizza
+// Функція для отримання опису
 function getDecription(card) {
     let content = [];
     Object.values(card.content).forEach(array => content = content.concat(array));
@@ -429,7 +436,7 @@ function getDecription(card) {
     return contentString.charAt(0).toUpperCase() + contentString.slice(1);
 }
 
-// Intersection observer to change header opacity on scroll
+// для прозорості хедера при гортанні
 const stickyElm = document.querySelector('.heading');
 const observer = new IntersectionObserver(
     ([e]) => e.target.classList.toggle('isSticky', e.intersectionRatio < 1),
